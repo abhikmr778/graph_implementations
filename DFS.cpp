@@ -22,8 +22,8 @@ void DFSrec(vector<int> adj[], bool visited[], int src){
 
 void DFS(vector<int> adj[], int V){
     bool visited[V+1];
-    for(int i=1;i<V;i++) visited[i] = false;
-    for(int i=1;i<V;i++){
+    for(int i=1;i<V+1;i++) visited[i] = false;
+    for(int i=1;i<V+1;i++){
         if(!visited[i]){
             DFSrec(adj,visited,i);
         }
