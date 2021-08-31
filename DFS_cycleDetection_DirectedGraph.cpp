@@ -17,7 +17,7 @@ bool checkCycle(vector<int> adj[], bool visited[], bool recStack[], int src){
         if(!visited[u] && checkCycle(adj,visited,recStack,u)==true){ // loop exists ahead in DFS
             return true;
         }
-        else if(recStack[u]==true){// loop detected
+        else if(recStack[u]==true){// loop detected by detecting a backedge
             return true;
         }
     }
