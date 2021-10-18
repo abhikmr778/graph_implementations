@@ -53,12 +53,17 @@ void sssp(vector<pair<int,int>> adj[], int V){
     topsort(adj,V,order);
 
     vector<int> distances(V,INT_MAX);
-    int src = order[0];
-    distances[0] = 0;
+    int start = 2;
+    distances[start] = 0;
     for(int i=0; i<V; i++){
-        for(auto u: adj[order[i]]){
-            if(distances[u.first] > distances[order[i]] + u.second){ //distance of the adjacent less than curr distance + edge weight
-                distances[u.first] = distances[order[i]] + u.second;
+        int nodeIdx = order[i];
+        if(distances[nodeIdx]!=INT_MAX){
+            for(auto u: adj[nodeIdx]){
+                int adj_node = u.first;
+                int edge_wt = u.second;
+                if(distances[adj_node] > distances[nodeIdx] + edge_wt){ //distance of the adjacent less than curr distance + edge weight
+                    distances[adj_node] = distances[nodeIdx] + edge_wt;
+                }
             }
         }
     }
